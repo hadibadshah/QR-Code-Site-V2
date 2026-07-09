@@ -1,0 +1,6 @@
+{
+  "name": "QR Code Generator",
+  "description": "A premium, client-side, high-resolution QR Code Generator for links, WiFi, WhatsApp, text, and emails.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

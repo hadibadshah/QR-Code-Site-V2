@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- Squircle Base matching the exact color and curvature from screenshot -->
+  <rect x="16" y="16" width="480" height="480" rx="120" fill="#10b981" />
+
+  <!-- Solid White 'EZ' display text perfectly centered with ultra-bold display font -->
+  <text x="256" y="278" 
+        font-family="system-ui, -apple-system, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+        font-size="200" 
+        font-weight="900" 
+        fill="#ffffff" 
+        text-anchor="middle" 
+        dominant-baseline="middle"
+        letter-spacing="-8">EZ</text>
+</svg>

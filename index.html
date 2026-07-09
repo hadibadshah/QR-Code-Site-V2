@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EZ QR Code Generator - Premium &amp; Free Utilities</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script>
+      // Prevent "Cannot set property fetch of #<Window> which has only a getter" error
+      // in environments (like sandboxed iframes) where window.fetch is read-only on the prototype.
+      try {
+        let currentFetch = window.fetch;
+        
+        function patchFetch(obj) {
+          if (!obj) return;
+          try {
+            Object.defineProperty(obj, 'fetch', {
+              configurable: true,
+              enumerable: true,
+              get() {
+                return currentFetch;
+              },
+              set(val) {
+                currentFetch = val;
+              }
+            });
+          } catch (e) {
+            console.warn("Failed to patch fetch on:", obj, e);
+          }
+        }
+
+        patchFetch(window);
+        patchFetch(globalThis);
+        patchFetch(self);
+      } catch (e) {
+        console.error("Critical error in fetch patch:", e);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <!-- Adsterra Social Bar Ad -->
+    <script src="https://pl30254129.effectivecpmnetwork.com/6c/0b/72/6c0b7269d73d4e59bbca9b6547f1046d.js"></script>
+  </body>
+</html>
+
