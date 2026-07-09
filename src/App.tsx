@@ -58,6 +58,7 @@ import {
 import { generateQRPayload } from './utils/qrHelper';
 import PromoGrid from './components/PromoGrid';
 import FAQ from './components/FAQ';
+import { AdsterraBanner } from './components/AdsterraBanner';
 
 export default function App() {
   // --- STATE ---
@@ -769,6 +770,9 @@ export default function App() {
                   Instantly construct error-free, custom-styled, and high-resolution QR codes. Perfect for business cards, brochures, digital signage, and hospitality menus. No registration required.
                 </p>
               </div>
+
+              {/* Top Banner Ad */}
+              <AdsterraBanner id="top" />
 
               {/* Grid Layout: Controls (Col-8) vs Live Preview (Col-4) */}
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
@@ -3047,6 +3051,9 @@ export default function App() {
           )}
 
         </AnimatePresence>
+
+        {/* Bottom Banner Ad */}
+        <AdsterraBanner id="bottom" />
 
         {/* --- CROSS-PROMOTION NETWORK GRID --- */}
         <section className="mt-20 pt-10 border-t border-slate-200/60 dark:border-slate-900 space-y-6">

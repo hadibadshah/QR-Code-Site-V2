@@ -6,6 +6,33 @@
     <title>EZ QR Code Generator - Premium &amp; Free Utilities</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <script>
+      // Suppress cross-origin script errors and ad blocker network errors
+      window.onerror = function(message, source, lineno, colno, error) {
+        if (
+          message === 'Script error.' || 
+          !source || 
+          source.indexOf('effectivecpmnetwork.com') !== -1 || 
+          source.indexOf('highperformanceformat.com') !== -1
+        ) {
+          console.warn('Suppressed third-party script/ad error:', message, 'from', source);
+          return true; // Suppress reporting
+        }
+        return false;
+      };
+
+      window.addEventListener('error', function(event) {
+        if (
+          event.message === 'Script error.' ||
+          (event.filename && (
+            event.filename.indexOf('effectivecpmnetwork.com') !== -1 || 
+            event.filename.indexOf('highperformanceformat.com') !== -1
+          ))
+        ) {
+          event.stopImmediatePropagation();
+          event.preventDefault();
+        }
+      }, true);
+
       // Prevent "Cannot set property fetch of #<Window> which has only a getter" error
       // in environments (like sandboxed iframes) where window.fetch is read-only on the prototype.
       try {
