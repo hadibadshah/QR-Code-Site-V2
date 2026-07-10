@@ -24,6 +24,7 @@ import {
   Globe,
   Share2,
   ArrowRight,
+  ArrowLeft,
   MapPin,
   Compass,
   Box,
@@ -59,8 +60,35 @@ import { generateQRPayload } from './utils/qrHelper';
 import PromoGrid from './components/PromoGrid';
 import FAQ from './components/FAQ';
 import { AdsterraBanner } from './components/AdsterraBanner';
+import { useRouter, Link } from './components/Router';
+import { articles } from './data/articles';
 
 export default function App() {
+  const { path, navigateTo } = useRouter();
+
+  // Normalize path
+  const cleanPath = path === '/' ? '/' : path.replace(/\/$/, '');
+
+  let activeTab: 'tool' | 'about' | 'blog' | 'privacy' | 'terms' | 'contact' | 'article' = 'tool';
+  let currentArticleSlug: string | null = null;
+
+  if (cleanPath === '/about') {
+    activeTab = 'about';
+  } else if (cleanPath === '/blog') {
+    activeTab = 'blog';
+  } else if (cleanPath === '/contact') {
+    activeTab = 'contact';
+  } else if (cleanPath === '/privacy') {
+    activeTab = 'privacy';
+  } else if (cleanPath === '/terms') {
+    activeTab = 'terms';
+  } else if (cleanPath.startsWith('/articles/')) {
+    activeTab = 'article';
+    currentArticleSlug = cleanPath.substring('/articles/'.length);
+  } else {
+    activeTab = 'tool';
+  }
+
   // --- STATE ---
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     if (typeof window !== 'undefined') {
@@ -71,7 +99,6 @@ export default function App() {
     return 'light';
   });
 
-  const [activeTab, setActiveTab] = useState<'tool' | 'about' | 'blog' | 'privacy' | 'terms' | 'contact'>('tool');
   const [exportFormat, setExportFormat] = useState<'png' | 'jpeg' | 'pdf'>('png');
   const [inputType, setInputType] = useState<QRInputType>('website');
 
@@ -693,7 +720,7 @@ export default function App() {
           
           {/* Logo */}
           <div 
-            onClick={() => setActiveTab('tool')} 
+            onClick={() => navigateTo('/')} 
             className="flex items-center gap-2 cursor-pointer group"
             id="brand-logo"
           >
@@ -713,20 +740,23 @@ export default function App() {
                 { id: 'privacy', label: 'Privacy' },
                 { id: 'terms', label: 'Terms' }
               ] as const
-            ).map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`px-3 py-1 md:px-4 md:py-1.5 rounded-full text-xs font-bold tracking-wide transition-all whitespace-nowrap cursor-pointer ${
-                  activeTab === tab.id
-                    ? 'bg-white dark:bg-slate-800 text-slate-800 dark:text-white shadow-xs'
-                    : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
-                }`}
-                id={`tab-${tab.id}`}
-              >
-                {tab.label}
-              </button>
-            ))}
+            ).map((tab) => {
+              const tabActive = activeTab === tab.id || (tab.id === 'blog' && activeTab === 'article');
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => navigateTo(tab.id === 'tool' ? '/' : '/' + tab.id)}
+                  className={`px-3 py-1 md:px-4 md:py-1.5 rounded-full text-xs font-bold tracking-wide transition-all whitespace-nowrap cursor-pointer ${
+                    tabActive
+                      ? 'bg-white dark:bg-slate-800 text-slate-800 dark:text-white shadow-xs'
+                      : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
+                  }`}
+                  id={`tab-${tab.id}`}
+                >
+                  {tab.label}
+                </button>
+              );
+            })}
           </div>
 
           {/* Self-contained Dark Mode switch & CTA */}
@@ -2653,7 +2683,7 @@ export default function App() {
                 </p>
                 <div className="pt-2">
                   <button
-                    onClick={() => setActiveTab('tool')}
+                    onClick={() => navigateTo('/')}
                     className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-slate-900 font-bold text-sm shadow-md hover:scale-105 active:scale-95 transition-all cursor-pointer animate-pulse-slow"
                   >
                     <span>Create Your Free QR Code Now</span>
@@ -2707,7 +2737,7 @@ export default function App() {
                   </div>
                   <div className="pt-4 border-t border-slate-100 dark:border-slate-800/50 flex items-center justify-between">
                     <span className="text-[11px] font-mono text-slate-400 font-bold">5 MIN READ</span>
-                    <button onClick={() => setActiveTab('about')} className="text-xs font-mono font-bold text-emerald-500 hover:underline inline-flex items-center gap-1 cursor-pointer">
+                    <button onClick={() => navigateTo('/articles/how-to-create-custom-qr-codes-with-logos-free')} className="text-xs font-mono font-bold text-emerald-500 hover:underline inline-flex items-center gap-1 cursor-pointer">
                       <span>Read Guide</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </button>
@@ -2729,7 +2759,7 @@ export default function App() {
                   </div>
                   <div className="pt-4 border-t border-slate-100 dark:border-slate-800/50 flex items-center justify-between">
                     <span className="text-[11px] font-mono text-slate-400 font-bold">4 MIN READ</span>
-                    <button onClick={() => setActiveTab('about')} className="text-xs font-mono font-bold text-emerald-500 hover:underline inline-flex items-center gap-1 cursor-pointer">
+                    <button onClick={() => navigateTo('/articles/the-expiration-trap-of-free-online-qr-generators')} className="text-xs font-mono font-bold text-emerald-500 hover:underline inline-flex items-center gap-1 cursor-pointer">
                       <span>Read Guide</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </button>
@@ -2751,7 +2781,7 @@ export default function App() {
                   </div>
                   <div className="pt-4 border-t border-slate-100 dark:border-slate-800/50 flex items-center justify-between">
                     <span className="text-[11px] font-mono text-slate-400 font-bold">6 MIN READ</span>
-                    <button onClick={() => setActiveTab('about')} className="text-xs font-mono font-bold text-emerald-500 hover:underline inline-flex items-center gap-1 cursor-pointer">
+                    <button onClick={() => navigateTo('/articles/top-7-free-digital-tools-for-modern-businesses-in-2026')} className="text-xs font-mono font-bold text-emerald-500 hover:underline inline-flex items-center gap-1 cursor-pointer">
                       <span>Read Guide</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </button>
@@ -2776,6 +2806,106 @@ export default function App() {
               </div>
             </motion.div>
           )}
+
+          {/* TAB 3.5: DETAILED ARTICLE READER PAGE */}
+          {activeTab === 'article' && (() => {
+            const article = articles.find(a => a.slug === currentArticleSlug);
+            if (!article) {
+              return (
+                <motion.div
+                  key="article-404"
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.3 }}
+                  className="text-center py-20 space-y-6"
+                >
+                  <h2 className="text-3xl font-black font-display text-slate-800 dark:text-white">Article Not Found</h2>
+                  <p className="text-slate-500 max-w-sm mx-auto">This reading guide could not be located. It may have been moved or renamed.</p>
+                  <button onClick={() => navigateTo('/blog')} className="px-5 py-2.5 rounded-xl bg-emerald-500 text-white font-bold text-sm cursor-pointer hover:bg-emerald-600 transition-colors">
+                    Back to Articles
+                  </button>
+                </motion.div>
+              );
+            }
+            return (
+              <motion.div
+                key={`article-${article.slug}`}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.3 }}
+                className="max-w-3xl mx-auto space-y-8"
+              >
+                {/* Back Link */}
+                <div>
+                  <button 
+                    onClick={() => navigateTo('/blog')} 
+                    className="inline-flex items-center gap-2 text-sm font-bold text-emerald-500 hover:underline cursor-pointer"
+                  >
+                    <ArrowLeft className="w-4 h-4" />
+                    <span>Back to Articles</span>
+                  </button>
+                </div>
+
+                {/* Article Header Card */}
+                <div className="space-y-4">
+                  <div className="inline-flex items-center gap-2">
+                    <span className="text-[10px] bg-emerald-500/10 text-emerald-500 font-extrabold px-3 py-1 rounded-full font-mono uppercase tracking-wider">
+                      {article.category}
+                    </span>
+                    <span className="text-xs text-slate-400 dark:text-slate-500">•</span>
+                    <span className="text-xs font-mono text-slate-400 dark:text-slate-500 font-bold">{article.readTime}</span>
+                    <span className="text-xs text-slate-400 dark:text-slate-500">•</span>
+                    <span className="text-xs font-mono text-slate-400 dark:text-slate-500 font-bold">{article.publishDate}</span>
+                  </div>
+                  
+                  <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight font-display text-slate-900 dark:text-white leading-tight">
+                    {article.title}
+                  </h1>
+                </div>
+
+                {/* --- ADSTERRA BANNER: TOP OF ARTICLE --- */}
+                <div className="my-6 p-1 border border-slate-200/50 dark:border-slate-800/40 rounded-3xl bg-white dark:bg-slate-900/50 overflow-hidden">
+                  <div className="text-[10px] text-center text-slate-400 font-mono font-bold py-1 uppercase tracking-wider">ADVERTISEMENT</div>
+                  <AdsterraBanner id={`article-top-${article.slug}`} />
+                </div>
+
+                {/* Detailed Content */}
+                <div 
+                  className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 space-y-6 leading-relaxed"
+                  dangerouslySetInnerHTML={{ __html: article.contentHtml }}
+                />
+
+                {/* --- ADSTERRA BANNER: BOTTOM OF ARTICLE --- */}
+                <div className="my-6 p-1 border border-slate-200/50 dark:border-slate-800/40 rounded-3xl bg-white dark:bg-slate-900/50 overflow-hidden">
+                  <div className="text-[10px] text-center text-slate-400 font-mono font-bold py-1 uppercase tracking-wider">ADVERTISEMENT</div>
+                  <AdsterraBanner id={`article-bottom-${article.slug}`} />
+                </div>
+
+                {/* Ready to generate footer CTA */}
+                <div className="p-8 rounded-3xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white text-center space-y-5 shadow-lg relative overflow-hidden mt-12">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.1),transparent)] pointer-events-none" />
+                  <h3 className="text-xl md:text-2xl font-extrabold tracking-tight font-display">
+                    Need a high-resolution custom QR Code?
+                  </h3>
+                  <p className="text-emerald-100 max-w-md mx-auto text-xs leading-relaxed">
+                    Create vector PNG/PDF codes with your custom colors, margins, and logos right now in our free client-side tool.
+                  </p>
+                  <div className="pt-2">
+                    <button
+                      onClick={() => navigateTo('/')}
+                      className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white hover:bg-slate-50 text-slate-900 font-bold text-xs shadow-md hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                    >
+                      <span>Generate QR Code Free</span>
+                      <ArrowRight className="w-3.5 h-3.5 text-emerald-500" />
+                    </button>
+                  </div>
+                </div>
+
+              </motion.div>
+            );
+          })()}
 
           {/* TAB 4: CONTACT US PAGE (Interactive) */}
           {activeTab === 'contact' && (
@@ -3107,8 +3237,8 @@ export default function App() {
 
           {/* Privacy/Policy links & Contact modal trigger */}
           <div className="flex items-center gap-6 flex-wrap justify-center">
-            <a href="https://eztoolbox.xyz" className="hover:text-emerald-500 transition-colors">Privacy Policy</a>
-            <a href="https://eztoolbox.xyz" className="hover:text-emerald-500 transition-colors">Terms of Service</a>
+            <Link to="/privacy" className="hover:text-emerald-500 transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-emerald-500 transition-colors">Terms of Service</Link>
             
             <button
               onClick={() => setSupportModalOpen(true)}
