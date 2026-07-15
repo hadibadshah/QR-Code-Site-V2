@@ -107,7 +107,7 @@ export default function App() {
   const [inputType, setInputType] = useState<QRInputType>('website');
 
   // Input Data States
-  const [websiteUrl, setWebsiteUrl] = useState('https://eztoolbox.xyz');
+  const [websiteUrl, setWebsiteUrl] = useState('https://qr.eztoolbox.xyz');
   const [plainText, setPlainText] = useState('Welcome to EZ Toolbox QR Code Generator! Customize colors, resolution, and margins completely free.');
   
   const [wifiForm, setWifiForm] = useState<WiFiForm>({
@@ -638,7 +638,7 @@ export default function App() {
         pdf.setFont('helvetica', 'italic');
         pdf.setFontSize(8.5);
         pdf.setTextColor(148, 163, 184); // slate-400
-        pdf.text('Generated instantly on eztoolbox.xyz. Permanent, unlimited scanning, and 100% free.', 105, 245, { align: 'center' });
+        pdf.text('Generated instantly on qr.eztoolbox.xyz. Permanent, unlimited scanning, and 100% free.', 105, 245, { align: 'center' });
         
         pdf.save(`eztoolbox-qr-${inputType}-${Date.now()}.pdf`);
         showToast('✨ High-fidelity print-ready PDF downloaded successfully!');
@@ -2666,6 +2666,17 @@ export default function App() {
                 </p>
               </div>
 
+              {/* --- RESPONSIVE ADSTERRA BANNER --- */}
+              <div className="w-full flex flex-col items-center my-6 overflow-hidden">
+                <div className="text-[10px] text-center text-slate-400 font-mono font-bold py-1 uppercase tracking-wider">ADVERTISEMENT</div>
+                <div className="block lg:hidden w-full">
+                  <Adsterra320x50 id="about-top-mobile" />
+                </div>
+                <div className="hidden lg:block w-full">
+                  <AdsterraBanner id="about-top-desktop" />
+                </div>
+              </div>
+
               {/* Pristine Geometric Bento Grid */}
               <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
                 
@@ -2791,6 +2802,17 @@ export default function App() {
                 </p>
               </div>
 
+              {/* --- RESPONSIVE ADSTERRA BANNER --- */}
+              <div className="w-full flex flex-col items-center my-6 overflow-hidden">
+                <div className="text-[10px] text-center text-slate-400 font-mono font-bold py-1 uppercase tracking-wider">ADVERTISEMENT</div>
+                <div className="block lg:hidden w-full">
+                  <Adsterra320x50 id="blog-top-mobile" />
+                </div>
+                <div className="hidden lg:block w-full">
+                  <AdsterraBanner id="blog-top-desktop" />
+                </div>
+              </div>
+
               {/* Bento Article Grid */}
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 
@@ -2860,6 +2882,17 @@ export default function App() {
                   </div>
                 </div>
 
+              </div>
+
+              {/* --- RESPONSIVE ADSTERRA BANNER --- */}
+              <div className="w-full flex flex-col items-center my-6 overflow-hidden">
+                <div className="text-[10px] text-center text-slate-400 font-mono font-bold py-1 uppercase tracking-wider">ADVERTISEMENT</div>
+                <div className="block lg:hidden w-full">
+                  <Adsterra320x50 id="blog-mid-mobile" />
+                </div>
+                <div className="hidden lg:block w-full">
+                  <AdsterraBanner id="blog-mid-desktop" />
+                </div>
               </div>
 
               {/* Detailed SEO Keywords Content for Crawlers */}
@@ -2938,9 +2971,14 @@ export default function App() {
                 </div>
 
                 {/* --- ADSTERRA BANNER: TOP OF ARTICLE --- */}
-                <div className="my-6 p-1 border border-slate-200/50 dark:border-slate-800/40 rounded-3xl bg-white dark:bg-slate-900/50 overflow-hidden">
+                <div className="my-6 p-1 border border-slate-200/50 dark:border-slate-800/40 rounded-3xl bg-white dark:bg-slate-900/50 overflow-hidden flex flex-col items-center">
                   <div className="text-[10px] text-center text-slate-400 font-mono font-bold py-1 uppercase tracking-wider">ADVERTISEMENT</div>
-                  <AdsterraBanner id={`article-top-${article.slug}`} />
+                  <div className="block lg:hidden w-full">
+                    <Adsterra320x50 id={`article-top-mobile-${article.slug}`} />
+                  </div>
+                  <div className="hidden lg:block w-full">
+                    <AdsterraBanner id={`article-top-desktop-${article.slug}`} />
+                  </div>
                 </div>
 
                 {/* Detailed Content */}
@@ -2950,9 +2988,14 @@ export default function App() {
                 />
 
                 {/* --- ADSTERRA BANNER: BOTTOM OF ARTICLE --- */}
-                <div className="my-6 p-1 border border-slate-200/50 dark:border-slate-800/40 rounded-3xl bg-white dark:bg-slate-900/50 overflow-hidden">
+                <div className="my-6 p-1 border border-slate-200/50 dark:border-slate-800/40 rounded-3xl bg-white dark:bg-slate-900/50 overflow-hidden flex flex-col items-center">
                   <div className="text-[10px] text-center text-slate-400 font-mono font-bold py-1 uppercase tracking-wider">ADVERTISEMENT</div>
-                  <AdsterraBanner id={`article-bottom-${article.slug}`} />
+                  <div className="block lg:hidden w-full">
+                    <Adsterra320x50 id={`article-bottom-mobile-${article.slug}`} />
+                  </div>
+                  <div className="hidden lg:block w-full">
+                    <AdsterraBanner id={`article-bottom-desktop-${article.slug}`} />
+                  </div>
                 </div>
 
                 {/* Ready to generate footer CTA */}
@@ -3003,6 +3046,17 @@ export default function App() {
                 </p>
               </div>
 
+              {/* --- RESPONSIVE ADSTERRA BANNER --- */}
+              <div className="w-full flex flex-col items-center my-6 overflow-hidden">
+                <div className="text-[10px] text-center text-slate-400 font-mono font-bold py-1 uppercase tracking-wider">ADVERTISEMENT</div>
+                <div className="block lg:hidden w-full">
+                  <Adsterra320x50 id="contact-top-mobile" />
+                </div>
+                <div className="hidden lg:block w-full">
+                  <AdsterraBanner id="contact-top-desktop" />
+                </div>
+              </div>
+
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 
                 {/* Left Side: Contact Information Cards */}
@@ -3037,6 +3091,12 @@ export default function App() {
                     <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-sans">
                       Need high-resolution thumbnails, background removers, or dynamic links? Head to <a href="https://eztoolbox.xyz" className="text-emerald-500 hover:underline font-semibold font-mono">eztoolbox.xyz</a> to explore our flagship downloader.
                     </p>
+                  </div>
+
+                  {/* --- ADSTERRA 300x250 SQUARE AD --- */}
+                  <div className="p-4 rounded-3xl border border-slate-200/60 dark:border-slate-800/60 bg-white dark:bg-slate-900/50 flex flex-col items-center overflow-hidden">
+                    <div className="text-[9px] text-center text-slate-400 font-mono font-bold mb-2 uppercase tracking-wider">ADVERTISEMENT</div>
+                    <Adsterra300x250 id="contact-sidebar-square" />
                   </div>
                 </div>
 
@@ -3157,6 +3217,17 @@ export default function App() {
                 </p>
               </div>
 
+              {/* --- RESPONSIVE ADSTERRA BANNER --- */}
+              <div className="w-full flex flex-col items-center my-6 overflow-hidden">
+                <div className="text-[10px] text-center text-slate-400 font-mono font-bold py-1 uppercase tracking-wider">ADVERTISEMENT</div>
+                <div className="block lg:hidden w-full">
+                  <Adsterra320x50 id="privacy-top-mobile" />
+                </div>
+                <div className="hidden lg:block w-full">
+                  <AdsterraBanner id="privacy-top-desktop" />
+                </div>
+              </div>
+
               <div className="prose prose-slate dark:prose-invert max-w-none text-xs md:text-sm text-slate-500 dark:text-slate-400 leading-relaxed space-y-6">
                 <p>
                   At <strong className="text-slate-800 dark:text-slate-200">EZ Toolbox</strong>, accessible from our digital tools suite including our flagship thumbnail download systems, one of our main priorities is the privacy of our visitors. This Privacy Policy document outline how we manage information, explaining in clear language why our 100% client-side technologies make us the safest option on the web.
@@ -3216,6 +3287,17 @@ export default function App() {
                 </p>
               </div>
 
+              {/* --- RESPONSIVE ADSTERRA BANNER --- */}
+              <div className="w-full flex flex-col items-center my-6 overflow-hidden">
+                <div className="text-[10px] text-center text-slate-400 font-mono font-bold py-1 uppercase tracking-wider">ADVERTISEMENT</div>
+                <div className="block lg:hidden w-full">
+                  <Adsterra320x50 id="terms-top-mobile" />
+                </div>
+                <div className="hidden lg:block w-full">
+                  <AdsterraBanner id="terms-top-desktop" />
+                </div>
+              </div>
+
               <div className="prose prose-slate dark:prose-invert max-w-none text-xs md:text-sm text-slate-500 dark:text-slate-400 leading-relaxed space-y-6">
                 <p>
                   Welcome to <strong className="text-slate-800 dark:text-slate-200">EZ Toolbox QR Code Generator</strong>. These Terms of Service govern your access to and usage of our free browser utility suite. By accessing or downloading generated graphic parameters from our platform, you agree to these transparent fair-use regulations.
@@ -3255,16 +3337,14 @@ export default function App() {
         </AnimatePresence>
 
         {/* --- NATIVE RECOMMENDATION AD WIDGET --- */}
-        {activeTab === 'tool' && (
-          <section className="mt-6 pt-4 border-t border-slate-200/60 dark:border-slate-900">
-            <div className="mb-3 text-center md:text-left">
-              <h3 className="text-sm font-bold text-slate-400 dark:text-slate-500 font-mono tracking-wider uppercase">
-                Recommended For You
-              </h3>
-            </div>
-            <AdsterraNative id="native-feed" />
-          </section>
-        )}
+        <section className="mt-6 pt-4 border-t border-slate-200/60 dark:border-slate-900">
+          <div className="mb-3 text-center md:text-left">
+            <h3 className="text-sm font-bold text-slate-400 dark:text-slate-500 font-mono tracking-wider uppercase">
+              Recommended For You
+            </h3>
+          </div>
+          <AdsterraNative id="native-feed" />
+        </section>
 
         {/* --- CROSS-PROMOTION NETWORK GRID --- */}
         <section className="mt-20 pt-10 border-t border-slate-200/60 dark:border-slate-900 space-y-6">

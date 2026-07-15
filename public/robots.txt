@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://eztoolbox.xyz/sitemap.xml
+Sitemap: https://qr.eztoolbox.xyz/sitemap.xml

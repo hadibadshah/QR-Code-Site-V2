@@ -21,7 +21,7 @@ async function startServer() {
   // robots.txt Route
   app.get('/robots.txt', (req, res) => {
     res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-    res.send('User-agent: *\nAllow: /\n\nSitemap: https://eztoolbox.xyz/sitemap.xml');
+    res.send('User-agent: *\nAllow: /\n\nSitemap: https://qr.eztoolbox.xyz/sitemap.xml');
   });
 
   // sitemap.xml Route

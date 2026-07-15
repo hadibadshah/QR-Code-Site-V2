@@ -68,8 +68,17 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <!-- Adsterra Social Bar Ad -->
-    <script src="https://pl30254129.effectivecpmnetwork.com/6c/0b/72/6c0b7269d73d4e59bbca9b6547f1046d.js"></script>
+    <!-- Adsterra Social Bar Ad - Desktop Only (Screen width >= 1024px) -->
+    <script>
+      (function() {
+        if (window.innerWidth >= 1024) {
+          var s = document.createElement('script');
+          s.type = 'text/javascript';
+          s.src = 'https://pl30254129.effectivecpmnetwork.com/6c/0b/72/6c0b7269d73d4e59bbca9b6547f1046d.js';
+          document.body.appendChild(s);
+        }
+      })();
+    </script>
   </body>
 </html>
 
