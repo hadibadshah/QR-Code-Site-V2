@@ -8,3 +8,78 @@
 }
 
 @variant dark (&:where(.dark, .dark *));
+
+.bg-ez-dots {
+  background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='28.7' y='28.7' width='2.6' height='2.6' transform='rotate%2845 30 30%29' fill='%23009b62' fill-opacity='0.36'/%3E%3Crect x='88.7' y='28.7' width='2.6' height='2.6' transform='rotate%2845 90 30%29' fill='%23f43f5e' fill-opacity='0.36'/%3E%3Crect x='28.7' y='88.7' width='2.6' height='2.6' transform='rotate%2845 30 90%29' fill='%230ea5e9' fill-opacity='0.36'/%3E%3Crect x='88.7' y='88.7' width='2.6' height='2.6' transform='rotate%2845 90 90%29' fill='%23eab308' fill-opacity='0.36'/%3E%3Crect x='58.7' y='58.7' width='2.6' height='2.6' transform='rotate%2845 60 60%29' fill='%23a855f7' fill-opacity='0.36'/%3E%3Crect x='118.7' y='58.7' width='2.6' height='2.6' transform='rotate%2845 120 60%29' fill='%23009b62' fill-opacity='0.36'/%3E%3Crect x='-1.3' y='58.7' width='2.6' height='2.6' transform='rotate%2845 0 60%29' fill='%23009b62' fill-opacity='0.36'/%3E%3Crect x='58.7' y='-1.3' width='2.6' height='2.6' transform='rotate%2845 60 0%29' fill='%23f43f5e' fill-opacity='0.36'/%3E%3Crect x='58.7' y='118.7' width='2.6' height='2.6' transform='rotate%2845 60 120%29' fill='%23f43f5e' fill-opacity='0.36'/%3E%3C/svg%3E");
+}
+
+.dark .bg-ez-dots {
+  background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='28.7' y='28.7' width='2.6' height='2.6' transform='rotate%2845 30 30%29' fill='%2310b981' fill-opacity='0.28'/%3E%3Crect x='88.7' y='28.7' width='2.6' height='2.6' transform='rotate%2845 90 30%29' fill='%23fb7185' fill-opacity='0.28'/%3E%3Crect x='28.7' y='88.7' width='2.6' height='2.6' transform='rotate%2845 30 90%29' fill='%2338bdf8' fill-opacity='0.28'/%3E%3Crect x='88.7' y='88.7' width='2.6' height='2.6' transform='rotate%2845 90 90%29' fill='%23facc15' fill-opacity='0.28'/%3E%3Crect x='58.7' y='58.7' width='2.6' height='2.6' transform='rotate%2845 60 60%29' fill='%23c084fc' fill-opacity='0.28'/%3E%3Crect x='118.7' y='58.7' width='2.6' height='2.6' transform='rotate%2845 120 60%29' fill='%2310b981' fill-opacity='0.28'/%3E%3Crect x='-1.3' y='58.7' width='2.6' height='2.6' transform='rotate%2845 0 60%29' fill='%2310b981' fill-opacity='0.28'/%3E%3Crect x='58.7' y='-1.3' width='2.6' height='2.6' transform='rotate%2845 60 0%29' fill='%23fb7185' fill-opacity='0.28'/%3E%3Crect x='58.7' y='118.7' width='2.6' height='2.6' transform='rotate%2845 60 120%29' fill='%23fb7185' fill-opacity='0.28'/%3E%3C/svg%3E");
+}
+
+/* Slightly darker, more defined styling for input, select, and textarea elements with a premium green gradient border touch */
+div.bg-ez-dots input[type="text"],
+div.bg-ez-dots input[type="url"],
+div.bg-ez-dots input[type="password"],
+div.bg-ez-dots input[type="email"],
+div.bg-ez-dots input[type="tel"],
+div.bg-ez-dots input[type="number"],
+div.bg-ez-dots select,
+div.bg-ez-dots textarea {
+  background: linear-gradient(#f8fafc, #f8fafc) padding-box,
+              linear-gradient(135deg, rgba(0, 155, 98, 0.4) 0%, rgba(16, 185, 129, 0.4) 50%, rgba(14, 165, 233, 0.3) 100%) border-box !important;
+  border: 1.5px solid transparent !important;
+  border-color: transparent !important;
+  color: #0f172a !important;
+  transition: all 0.25s ease;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+div.bg-ez-dots input[type="text"]:focus,
+div.bg-ez-dots input[type="url"]:focus,
+div.bg-ez-dots input[type="password"]:focus,
+div.bg-ez-dots input[type="email"]:focus,
+div.bg-ez-dots input[type="tel"]:focus,
+div.bg-ez-dots input[type="number"]:focus,
+div.bg-ez-dots select:focus,
+div.bg-ez-dots textarea:focus {
+  background: linear-gradient(#ffffff, #ffffff) padding-box,
+              linear-gradient(135deg, #009b62 0%, #10b981 50%, #0ea5e9 100%) border-box !important;
+  border: 1.5px solid transparent !important;
+  border-color: transparent !important;
+  box-shadow: 0 0 0 4px rgba(0, 155, 98, 0.18), 0 4px 12px -2px rgba(0, 155, 98, 0.08) !important;
+}
+
+.dark div.bg-ez-dots input[type="text"],
+.dark div.bg-ez-dots input[type="url"],
+.dark div.bg-ez-dots input[type="password"],
+.dark div.bg-ez-dots input[type="email"],
+.dark div.bg-ez-dots input[type="tel"],
+.dark div.bg-ez-dots input[type="number"],
+.dark div.bg-ez-dots select,
+.dark div.bg-ez-dots textarea {
+  background: linear-gradient(#0b1329, #0b1329) padding-box,
+              linear-gradient(135deg, rgba(16, 185, 129, 0.4) 0%, rgba(6, 182, 212, 0.35) 50%, rgba(99, 102, 241, 0.25) 100%) border-box !important;
+  border: 1.5px solid transparent !important;
+  border-color: transparent !important;
+  color: #f8fafc !important;
+  transition: all 0.25s ease;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3) !important;
+}
+
+.dark div.bg-ez-dots input[type="text"]:focus,
+.dark div.bg-ez-dots input[type="url"]:focus,
+.dark div.bg-ez-dots input[type="password"]:focus,
+.dark div.bg-ez-dots input[type="email"]:focus,
+.dark div.bg-ez-dots input[type="tel"]:focus,
+.dark div.bg-ez-dots input[type="number"]:focus,
+.dark div.bg-ez-dots select:focus,
+.dark div.bg-ez-dots textarea:focus {
+  background: linear-gradient(#090d16, #090d16) padding-box,
+              linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #6366f1 100%) border-box !important;
+  border: 1.5px solid transparent !important;
+  border-color: transparent !important;
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.25), 0 4px 20px -2px rgba(16, 185, 129, 0.15) !important;
+}
+
+

@@ -60,6 +60,10 @@ import { generateQRPayload } from './utils/qrHelper';
 import PromoGrid from './components/PromoGrid';
 import FAQ from './components/FAQ';
 import { AdsterraBanner } from './components/AdsterraBanner';
+import { Adsterra300x250 } from './components/Adsterra300x250';
+import { Adsterra160x600 } from './components/Adsterra160x600';
+import { Adsterra320x50 } from './components/Adsterra320x50';
+import { AdsterraNative } from './components/AdsterraNative';
 import { useRouter, Link } from './components/Router';
 import { articles } from './data/articles';
 
@@ -691,7 +695,34 @@ export default function App() {
   const backgroundPresets = ['#ffffff', '#f8fafc', '#fafaf9', '#f0fdf4', '#f5f3ff'];
 
   return (
-    <div className="min-h-screen font-sans bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 transition-colors duration-300 flex flex-col justify-between">
+    <div className="relative min-h-screen font-sans bg-slate-50 bg-ez-dots dark:bg-slate-950 text-slate-800 dark:text-slate-100 transition-colors duration-300 flex flex-col justify-between overflow-x-hidden">
+      
+      {/* Ambient Color Cloud Shading Background with low opacity matching main site */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden select-none" aria-hidden="true">
+        {/* Group 1 (Top Left Mashup - Green + Rose) */}
+        <div className="absolute top-[2%] left-[5%] w-[25%] h-[15%] rounded-full bg-[#009b62]/14 dark:bg-[#009b62]/9 blur-[80px] md:blur-[120px]" />
+        <div className="absolute top-[4%] left-[12%] w-[20%] h-[12%] rounded-full bg-rose-500/12 dark:bg-rose-500/8 blur-[80px] md:blur-[120px]" />
+
+        {/* Group 2 (Top Right Mashup - Rose + Amber) */}
+        <div className="absolute top-[12%] right-[10%] w-[25%] h-[15%] rounded-full bg-rose-500/12 dark:bg-rose-500/8 blur-[80px] md:blur-[120px]" />
+        <div className="absolute top-[14%] right-[4%] w-[20%] h-[12%] rounded-full bg-amber-500/10 dark:bg-amber-500/7 blur-[80px] md:blur-[120px]" />
+
+        {/* Group 3 (Middle Left Mashup - Teal + Green) */}
+        <div className="absolute top-[30%] left-[8%] w-[25%] h-[15%] rounded-full bg-teal-500/12 dark:bg-teal-500/8 blur-[80px] md:blur-[120px]" />
+        <div className="absolute top-[28%] left-[18%] w-[20%] h-[12%] rounded-full bg-[#009b62]/12 dark:bg-[#009b62]/8 blur-[80px] md:blur-[120px]" />
+
+        {/* Group 4 (Middle Right Mashup - Amber + Rose) */}
+        <div className="absolute top-[45%] right-[15%] w-[25%] h-[15%] rounded-full bg-amber-500/10 dark:bg-amber-500/7 blur-[80px] md:blur-[120px]" />
+        <div className="absolute top-[43%] right-[8%] w-[20%] h-[12%] rounded-full bg-rose-500/12 dark:bg-rose-500/8 blur-[80px] md:blur-[120px]" />
+
+        {/* Group 5 (Lower Left Mashup - Green + Teal) */}
+        <div className="absolute top-[65%] left-[10%] w-[25%] h-[15%] rounded-full bg-[#009b62]/12 dark:bg-[#009b62]/9 blur-[80px] md:blur-[120px]" />
+        <div className="absolute top-[67%] left-[4%] w-[20%] h-[12%] rounded-full bg-teal-500/12 dark:bg-teal-500/8 blur-[80px] md:blur-[120px]" />
+
+        {/* Group 6 (Bottom Right Mashup - Rose + Amber) */}
+        <div className="absolute top-[82%] right-[12%] w-[25%] h-[15%] rounded-full bg-rose-500/12 dark:bg-rose-500/8 blur-[80px] md:blur-[120px]" />
+        <div className="absolute top-[84%] right-[18%] w-[20%] h-[12%] rounded-full bg-amber-500/10 dark:bg-amber-500/7 blur-[80px] md:blur-[120px]" />
+      </div>
       
       {/* Toast Notification Container */}
       <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none">
@@ -716,17 +747,51 @@ export default function App() {
 
       {/* --- HEADER NAVIGATION --- */}
       <header className="sticky top-0 z-40 w-full border-b border-slate-200/55 dark:border-slate-900 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md">
-        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-4 h-20 flex items-center justify-between">
           
           {/* Logo */}
           <div 
             onClick={() => navigateTo('/')} 
-            className="flex items-center gap-2 cursor-pointer group"
+            className="flex items-center gap-3 cursor-pointer group shrink-0"
             id="brand-logo"
           >
-            <span className="text-xl md:text-2xl font-black font-display tracking-tight bg-gradient-to-r from-emerald-500 to-teal-600 bg-clip-text text-transparent uppercase transition-all group-hover:opacity-90">
-              EZ Toolbox 🛠️
-            </span>
+            {/* Green Squircle Logo Container matching screenshot exactly */}
+            <div className="w-11 h-11 md:w-12 md:h-12 bg-[#009b62] rounded-[14px] md:rounded-[16px] shadow-sm flex items-center justify-center shrink-0 transition-transform group-hover:scale-105 duration-200">
+              {/* White Monitor/Play screen icon */}
+              <svg 
+                className="w-5.5 h-5.5 md:w-6.5 md:h-6.5 text-white" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2.5" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              >
+                {/* TV/Screen with rounded corners */}
+                <rect x="2" y="3" width="20" height="14" rx="3.5" />
+                {/* Center Play triangle (filled) */}
+                <polygon points="10 7.5 15 10 10 12.5" fill="currentColor" />
+                {/* Stand representation */}
+                <path d="M9 20h6" />
+                <path d="M12 17v3" />
+              </svg>
+            </div>
+
+            {/* Typography brand details */}
+            <div className="flex flex-col">
+              <div className="flex items-center gap-1.5 leading-none">
+                <span className="text-lg md:text-xl font-extrabold font-sans text-slate-950 dark:text-white tracking-tight">
+                  EZ Toolbox
+                </span>
+                {/* Tool Badge Pill */}
+                <span className="inline-flex items-center justify-center bg-slate-100 dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800/80 px-1.5 py-0.5 rounded text-[10px] md:text-xs shadow-xs font-mono select-none">
+                  🛠️
+                </span>
+              </div>
+              <span className="text-[8px] md:text-[9px] font-bold text-slate-400 dark:text-slate-500 tracking-widest uppercase mt-1 block font-sans">
+                QR CODE ENGINE
+              </span>
+            </div>
           </div>
 
           {/* Multi Tab Switcher Pill Layout */}
@@ -774,7 +839,18 @@ export default function App() {
       </header>
 
       {/* --- MAIN BODY CONTAINER --- */}
-      <main className="flex-grow max-w-6xl w-full mx-auto px-4 py-8">
+      <main className="relative z-10 flex-grow max-w-6xl w-full mx-auto px-4 py-8">
+        
+        {/* Left Side Floating Fixed Skyscraper (160x600) - Only on 2xl+ viewports to guarantee 0 overlapping with layout */}
+        <div className="hidden 2xl:block fixed left-4 top-[180px] z-30">
+          <Adsterra160x600 id="floating-sidebar-left" />
+        </div>
+
+        {/* Right Side Floating Fixed Skyscraper (160x600) - Only on 2xl+ viewports to guarantee 0 overlapping with layout */}
+        <div className="hidden 2xl:block fixed right-4 top-[180px] z-30">
+          <Adsterra160x600 id="floating-sidebar-right" />
+        </div>
+
         <AnimatePresence mode="wait">
           
           {/* TAB 1: CORE QR CODE TOOL */}
@@ -801,8 +877,12 @@ export default function App() {
                 </p>
               </div>
 
-              {/* Top Banner Ad */}
-              <AdsterraBanner id="top" />
+              {/* Mobile Top Banner Ad (320x50) - Only shown on smaller screens to prevent top clutter on Desktop */}
+              <div className="w-full flex lg:hidden justify-center items-center my-1 overflow-visible">
+                <div className="shrink-0">
+                  <Adsterra320x50 id="top-mobile" />
+                </div>
+              </div>
 
               {/* Grid Layout: Controls (Col-8) vs Live Preview (Col-4) */}
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
@@ -2124,324 +2204,6 @@ export default function App() {
                     </div>
                   </div>
 
-                  {/* CUSTOM STYLING PANEL */}
-                  <div className="bg-white dark:bg-slate-900/80 border border-slate-200/60 dark:border-slate-800/50 rounded-3xl p-6 md:p-8 shadow-[0_4px_25px_-5px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_40px_-5px_rgba(0,0,0,0.04)] dark:hover:shadow-[0_12px_45px_rgba(0,0,0,0.3)] transition-all duration-300 space-y-6">
-                    <div className="flex items-center gap-2 pb-2 border-b border-slate-100 dark:border-slate-800/60">
-                      <Sparkles className="w-5 h-5 text-emerald-500" />
-                      <h3 className="text-base font-extrabold text-slate-850 dark:text-slate-100 font-display uppercase tracking-tight">
-                        Custom Styling Panel
-                      </h3>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      
-                      {/* FOREGROUND COLOR PICKER */}
-                      <div className="space-y-3">
-                        <label className="text-xs font-bold text-slate-400 dark:text-slate-500 block font-mono uppercase tracking-wider">
-                          Foreground Color
-                        </label>
-                        <div className="flex items-center gap-3">
-                          <input
-                            type="color"
-                            value={styleOptions.foreground}
-                            onChange={(e) => setStyleOptions({ ...styleOptions, foreground: e.target.value })}
-                            className="w-10 h-10 rounded-xl cursor-pointer border border-slate-200 dark:border-slate-800 bg-transparent p-0 overflow-hidden"
-                            id="style-foreground-picker"
-                          />
-                          <input
-                            type="text"
-                            value={styleOptions.foreground}
-                            onChange={(e) => setStyleOptions({ ...styleOptions, foreground: e.target.value })}
-                            className="w-24 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/50 font-mono text-xs text-slate-750 dark:text-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-500/20"
-                            placeholder="#0f172a"
-                            id="style-foreground-text"
-                          />
-                        </div>
-                        {/* Circular presets */}
-                        <div className="flex items-center gap-2 pt-1.5">
-                          {foregroundPresets.map((color) => (
-                            <button
-                              key={color}
-                              onClick={() => setStyleOptions({ ...styleOptions, foreground: color })}
-                              style={{ backgroundColor: color }}
-                              className={`w-6 h-6 rounded-full border border-slate-200 dark:border-slate-800/80 cursor-pointer hover:scale-110 active:scale-95 transition-all ${
-                                styleOptions.foreground.toLowerCase() === color.toLowerCase()
-                                  ? 'ring-2 ring-emerald-500 scale-105 shadow-sm'
-                                  : ''
-                              }`}
-                              title={color}
-                            />
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* BACKGROUND COLOR PICKER */}
-                      <div className="space-y-3">
-                        <label className="text-xs font-bold text-slate-400 dark:text-slate-500 block font-mono uppercase tracking-wider">
-                          Background Color
-                        </label>
-                        <div className="flex items-center gap-3">
-                          <input
-                            type="color"
-                            value={styleOptions.background}
-                            onChange={(e) => setStyleOptions({ ...styleOptions, background: e.target.value })}
-                            className="w-10 h-10 rounded-xl cursor-pointer border border-slate-200 dark:border-slate-800 bg-transparent p-0 overflow-hidden"
-                            id="style-background-picker"
-                          />
-                          <input
-                            type="text"
-                            value={styleOptions.background}
-                            onChange={(e) => setStyleOptions({ ...styleOptions, background: e.target.value })}
-                            className="w-24 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/50 font-mono text-xs text-slate-750 dark:text-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-500/20"
-                            placeholder="#ffffff"
-                            id="style-background-text"
-                          />
-                        </div>
-                        {/* Soft light presets */}
-                        <div className="flex items-center gap-2 pt-1.5">
-                          {backgroundPresets.map((color) => (
-                            <button
-                              key={color}
-                              onClick={() => setStyleOptions({ ...styleOptions, background: color })}
-                              style={{ backgroundColor: color }}
-                              className={`w-6 h-6 rounded-full border border-slate-200 dark:border-slate-800/80 cursor-pointer hover:scale-110 active:scale-95 transition-all ${
-                                styleOptions.background.toLowerCase() === color.toLowerCase()
-                                  ? 'ring-2 ring-emerald-500 scale-105 shadow-sm'
-                                  : ''
-                              }`}
-                              title={color}
-                            />
-                          ))}
-                        </div>
-                      </div>
-
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-5 border-t border-slate-100 dark:border-slate-800/60">
-                      
-                      {/* RESOLUTION SLIDER */}
-                      <div className="md:col-span-1 space-y-2">
-                        <div className="flex items-center justify-between">
-                          <label className="text-xs font-bold text-slate-400 dark:text-slate-500 font-mono uppercase tracking-wider">
-                            Resolution
-                          </label>
-                          <span className="text-[11px] font-bold text-emerald-500 font-mono">
-                            {styleOptions.resolution}px
-                          </span>
-                        </div>
-                        <input
-                          type="range"
-                          min={256}
-                          max={1024}
-                          step={64}
-                          value={styleOptions.resolution}
-                          onChange={(e) => setStyleOptions({ ...styleOptions, resolution: parseInt(e.target.value) })}
-                          className="w-full accent-emerald-500 h-1.5 bg-slate-100 dark:bg-slate-850 rounded-lg appearance-none cursor-pointer"
-                          id="style-resolution-range"
-                        />
-                        <span className="text-[10px] text-slate-400 dark:text-slate-500 block leading-tight">
-                          256px to 1024px print-ready.
-                        </span>
-                      </div>
-
-                      {/* QUIET ZONE SELECTOR */}
-                      <div className="space-y-2">
-                        <label className="text-xs font-bold text-slate-400 dark:text-slate-500 block font-mono uppercase tracking-wider">
-                          Quiet Zone
-                        </label>
-                        <select
-                          value={styleOptions.quietZone}
-                          onChange={(e) => setStyleOptions({ ...styleOptions, quietZone: parseInt(e.target.value) })}
-                          className="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/50 focus:outline-hidden focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 text-xs text-slate-750 dark:text-slate-300 font-semibold"
-                          id="style-quietzone-select"
-                        >
-                          <option value="0">0px (No Margin)</option>
-                          <option value="1">1 Block (Thin)</option>
-                          <option value="2">2 Blocks (Balanced)</option>
-                          <option value="4">4 Blocks (Wide)</option>
-                        </select>
-                      </div>
-
-                      {/* SCAN RELIABILITY SELECTOR */}
-                      <div className="space-y-2">
-                        <label className="text-xs font-bold text-slate-400 dark:text-slate-500 block font-mono uppercase tracking-wider">
-                          Scan Reliability
-                        </label>
-                        <select
-                          value={styleOptions.errorCorrectionLevel}
-                          onChange={(e) => setStyleOptions({ ...styleOptions, errorCorrectionLevel: e.target.value as any })}
-                          className="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/50 focus:outline-hidden focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 text-xs text-slate-750 dark:text-slate-300 font-semibold"
-                          id="style-errorcorrection-select"
-                        >
-                          <option value="L">Standard (7% backup)</option>
-                          <option value="M">Enhanced (15% backup)</option>
-                          <option value="Q">Excellent (25% backup)</option>
-                          <option value="H">Maximum (30% backup)</option>
-                        </select>
-                      </div>
-
-                    </div>
-
-                    {/* CENTER LOGO CONFIGURATION */}
-                    <div className="pt-5 border-t border-slate-100 dark:border-slate-800/60 space-y-4">
-                      <div className="flex items-center gap-2">
-                        <ImageIcon className="w-4 h-4 text-emerald-500" />
-                        <h4 className="text-xs font-bold text-slate-750 dark:text-slate-300 font-display uppercase tracking-tight">
-                          Center Logo Overlay
-                        </h4>
-                      </div>
-
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="space-y-1.5">
-                          <label className="text-[11px] font-bold text-slate-450 dark:text-slate-500 uppercase tracking-wider block font-mono">Logo Type</label>
-                          <select
-                            value={styleOptions.logoType}
-                            onChange={(e) => {
-                              const val = e.target.value as any;
-                              setStyleOptions({ ...styleOptions, logoType: val });
-                            }}
-                            className="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/50 focus:outline-hidden focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 text-xs text-slate-750 dark:text-slate-300 font-semibold"
-                            id="logo-type-select"
-                          >
-                            <option value="auto">Auto (Match QR Type Category)</option>
-                            <option value="none">None (Plain QR Code)</option>
-                            <option value="custom">Custom Image Upload...</option>
-                            <option value="website">🌐 Globe Logo</option>
-                            <option value="text">📝 Note Logo</option>
-                            <option value="wifi">📶 WiFi Signal Logo</option>
-                            <option value="whatsapp">💬 WhatsApp Chat Logo</option>
-                            <option value="email">✉️ Envelope Logo</option>
-                            <option value="map">📍 Location Marker Logo</option>
-                            <option value="social">📱 Generic Phone / Social Logo</option>
-                            <option value="facebook">📘 Facebook Logo</option>
-                            <option value="instagram">📸 Instagram Logo</option>
-                            <option value="linkedin">💼 LinkedIn Logo</option>
-                            <option value="youtube">📺 YouTube Logo</option>
-                            <option value="tiktok">🎵 TikTok Logo</option>
-                            <option value="twitter">𝕏 Twitter Logo</option>
-                            <option value="product">📦 Box / Product Logo</option>
-                            <option value="payment">💳 Card / Payment Logo</option>
-                            <option value="vcard">👤 User Avatar Logo</option>
-                          </select>
-                        </div>
-
-                        {styleOptions.logoType === 'custom' && (
-                          <div className="space-y-4 col-span-1 md:col-span-2">
-                            <div className="space-y-1.5">
-                              <label className="text-[11px] font-bold text-slate-450 dark:text-slate-500 uppercase tracking-wider block font-mono">Upload Logo Image</label>
-                              <div className="flex items-center gap-3">
-                                <label className="flex items-center gap-2 px-3 py-1.5 rounded-xl border border-dashed border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/50 hover:bg-slate-100/50 dark:hover:bg-slate-900/50 text-xs font-semibold text-slate-600 dark:text-slate-400 cursor-pointer transition-all">
-                                  <Upload className="w-3.5 h-3.5 text-emerald-500" />
-                                  <span>Browse...</span>
-                                  <input
-                                    type="file"
-                                    accept="image/*"
-                                    className="hidden"
-                                    onChange={(e) => {
-                                      const file = e.target.files?.[0];
-                                      if (file) {
-                                        const reader = new FileReader();
-                                        reader.onload = (event) => {
-                                          setStyleOptions({
-                                            ...styleOptions,
-                                            customLogoData: event.target?.result as string,
-                                            customLogoScale: 1.0,
-                                            customLogoRadius: 0.25
-                                          });
-                                        };
-                                        reader.readAsDataURL(file);
-                                      }
-                                    }}
-                                  />
-                                </label>
-                                {styleOptions.customLogoData ? (
-                                  <div className="flex items-center gap-2">
-                                    <img
-                                      src={styleOptions.customLogoData}
-                                      alt="Custom logo"
-                                      className="w-8 h-8 rounded-lg object-contain border border-slate-200 dark:border-slate-800 bg-white"
-                                    />
-                                    <button
-                                      onClick={() => setStyleOptions({ ...styleOptions, customLogoData: null })}
-                                      className="p-1 rounded-full text-red-500 hover:bg-red-50 dark:hover:bg-red-950/20 cursor-pointer"
-                                      title="Remove Image"
-                                    >
-                                      <X className="w-3.5 h-3.5" />
-                                    </button>
-                                  </div>
-                                ) : (
-                                  <span className="text-[10px] text-slate-400 dark:text-slate-500 font-mono">No file selected</span>
-                                )}
-                              </div>
-                            </div>
-
-                            {styleOptions.customLogoData && (
-                              <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950/40 border border-slate-100 dark:border-slate-850/60 space-y-4">
-                                <div className="flex items-center justify-between border-b border-slate-200/40 dark:border-slate-850/20 pb-2">
-                                  <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 font-mono uppercase tracking-wider block">
-                                    Logo Zoom & Corner Cropping
-                                  </span>
-                                  <span className="text-[10px] bg-emerald-500/10 text-emerald-500 font-bold px-2 py-0.5 rounded-full font-mono">
-                                    Live Crop
-                                  </span>
-                                </div>
-
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                  <div className="space-y-1.5">
-                                    <div className="flex items-center justify-between">
-                                      <label className="text-[11px] font-semibold text-slate-600 dark:text-slate-400">
-                                        Zoom / Scale Size
-                                      </label>
-                                      <span className="text-[10px] font-mono font-bold text-emerald-500">
-                                        {Math.round((styleOptions.customLogoScale ?? 1.0) * 100)}%
-                                      </span>
-                                    </div>
-                                    <input
-                                      type="range"
-                                      min="0.5"
-                                      max="1.5"
-                                      step="0.05"
-                                      value={styleOptions.customLogoScale ?? 1.0}
-                                      onChange={(e) => setStyleOptions({
-                                        ...styleOptions,
-                                        customLogoScale: parseFloat(e.target.value)
-                                      })}
-                                      className="w-full accent-emerald-500 h-1 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer"
-                                    />
-                                  </div>
-
-                                  <div className="space-y-1.5">
-                                    <div className="flex items-center justify-between">
-                                      <label className="text-[11px] font-semibold text-slate-600 dark:text-slate-400">
-                                        Corner Radius Crop
-                                      </label>
-                                      <span className="text-[10px] font-mono font-bold text-emerald-500">
-                                        {Math.round((styleOptions.customLogoRadius ?? 0.25) * 200)}%
-                                      </span>
-                                    </div>
-                                    <input
-                                      type="range"
-                                      min="0"
-                                      max="0.5"
-                                      step="0.02"
-                                      value={styleOptions.customLogoRadius ?? 0.25}
-                                      onChange={(e) => setStyleOptions({
-                                        ...styleOptions,
-                                        customLogoRadius: parseFloat(e.target.value)
-                                      })}
-                                      className="w-full accent-emerald-500 h-1 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer"
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-                            )}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-
-                  </div>
-
                 </div>
 
                 {/* RIGHT SIDE: LIVE PREVIEW & SAVE ACTIONS (Sticky) */}
@@ -2561,7 +2323,317 @@ export default function App() {
                     </div>
 
                   </div>
+
+                  {/* CUSTOM STYLING PANEL */}
+                  <div className="bg-white dark:bg-slate-900/90 border border-slate-200/60 dark:border-slate-800/50 rounded-3xl p-5 md:p-6 shadow-[0_4px_25px_-5px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_40px_-5px_rgba(0,0,0,0.04)] dark:hover:shadow-[0_12px_45px_rgba(0,0,0,0.3)] transition-all duration-300 space-y-5">
+                    <div className="flex items-center gap-2 pb-2 border-b border-slate-100 dark:border-slate-800/60">
+                      <Sparkles className="w-4 h-4 text-emerald-500" />
+                      <h3 className="text-xs font-extrabold text-slate-850 dark:text-slate-100 font-display uppercase tracking-tight">
+                        Custom Styling
+                      </h3>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4">
+                      
+                      {/* FOREGROUND COLOR PICKER */}
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-bold text-slate-400 dark:text-slate-500 block font-mono uppercase tracking-wider">
+                          Foreground
+                        </label>
+                        <div className="flex items-center gap-2">
+                          <input
+                            type="color"
+                            value={styleOptions.foreground}
+                            onChange={(e) => setStyleOptions({ ...styleOptions, foreground: e.target.value })}
+                            className="w-7 h-7 rounded-lg cursor-pointer border border-slate-200 dark:border-slate-800 bg-transparent p-0 overflow-hidden shrink-0"
+                            id="style-foreground-picker"
+                          />
+                          <input
+                            type="text"
+                            value={styleOptions.foreground}
+                            onChange={(e) => setStyleOptions({ ...styleOptions, foreground: e.target.value })}
+                            className="w-full min-w-0 px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/50 font-mono text-[10px] text-slate-750 dark:text-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-500/20"
+                            placeholder="#0f172a"
+                            id="style-foreground-text"
+                          />
+                        </div>
+                        {/* Circular presets */}
+                        <div className="flex flex-wrap items-center gap-1 pt-1">
+                          {foregroundPresets.map((color) => (
+                            <button
+                              key={color}
+                              onClick={() => setStyleOptions({ ...styleOptions, foreground: color })}
+                              style={{ backgroundColor: color }}
+                              className={`w-4 h-4 rounded-full border border-slate-200 dark:border-slate-800/80 cursor-pointer hover:scale-110 active:scale-95 transition-all ${
+                                styleOptions.foreground.toLowerCase() === color.toLowerCase()
+                                  ? 'ring-2 ring-emerald-500 scale-105 shadow-sm'
+                                  : ''
+                              }`}
+                              title={color}
+                            />
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* BACKGROUND COLOR PICKER */}
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-bold text-slate-400 dark:text-slate-500 block font-mono uppercase tracking-wider">
+                          Background
+                        </label>
+                        <div className="flex items-center gap-2">
+                          <input
+                            type="color"
+                            value={styleOptions.background}
+                            onChange={(e) => setStyleOptions({ ...styleOptions, background: e.target.value })}
+                            className="w-7 h-7 rounded-lg cursor-pointer border border-slate-200 dark:border-slate-800 bg-transparent p-0 overflow-hidden shrink-0"
+                            id="style-background-picker"
+                          />
+                          <input
+                            type="text"
+                            value={styleOptions.background}
+                            onChange={(e) => setStyleOptions({ ...styleOptions, background: e.target.value })}
+                            className="w-full min-w-0 px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/50 font-mono text-[10px] text-slate-750 dark:text-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-500/20"
+                            placeholder="#ffffff"
+                            id="style-background-text"
+                          />
+                        </div>
+                        {/* Soft light presets */}
+                        <div className="flex flex-wrap items-center gap-1 pt-1">
+                          {backgroundPresets.map((color) => (
+                            <button
+                              key={color}
+                              onClick={() => setStyleOptions({ ...styleOptions, background: color })}
+                              style={{ backgroundColor: color }}
+                              className={`w-4 h-4 rounded-full border border-slate-200 dark:border-slate-800/80 cursor-pointer hover:scale-110 active:scale-95 transition-all ${
+                                styleOptions.background.toLowerCase() === color.toLowerCase()
+                                  ? 'ring-2 ring-emerald-500 scale-105 shadow-sm'
+                                  : ''
+                              }`}
+                              title={color}
+                            />
+                          ))}
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <div className="space-y-3.5 pt-4 border-t border-slate-100 dark:border-slate-800/60">
+                      
+                      {/* RESOLUTION SLIDER */}
+                      <div className="space-y-1.5">
+                        <div className="flex items-center justify-between">
+                          <label className="text-[10px] font-bold text-slate-400 dark:text-slate-500 font-mono uppercase tracking-wider">
+                            Resolution
+                          </label>
+                          <span className="text-[10px] font-bold text-emerald-500 font-mono">
+                            {styleOptions.resolution}px
+                          </span>
+                        </div>
+                        <input
+                          type="range"
+                          min={256}
+                          max={1024}
+                          step={64}
+                          value={styleOptions.resolution}
+                          onChange={(e) => setStyleOptions({ ...styleOptions, resolution: parseInt(e.target.value) })}
+                          className="w-full accent-emerald-500 h-1 bg-slate-100 dark:bg-slate-850 rounded-lg appearance-none cursor-pointer"
+                          id="style-resolution-range"
+                        />
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-3">
+                        {/* QUIET ZONE SELECTOR */}
+                        <div className="space-y-1.5">
+                          <label className="text-[10px] font-bold text-slate-400 dark:text-slate-500 block font-mono uppercase tracking-wider">
+                            Quiet Zone
+                          </label>
+                          <select
+                            value={styleOptions.quietZone}
+                            onChange={(e) => setStyleOptions({ ...styleOptions, quietZone: parseInt(e.target.value) })}
+                            className="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/50 focus:outline-hidden focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 text-[11px] text-slate-750 dark:text-slate-300 font-semibold"
+                            id="style-quietzone-select"
+                          >
+                            <option value="0">0px (None)</option>
+                            <option value="1">1 Block</option>
+                            <option value="2">2 Blocks</option>
+                            <option value="4">4 Blocks</option>
+                          </select>
+                        </div>
+
+                        {/* SCAN RELIABILITY SELECTOR */}
+                        <div className="space-y-1.5">
+                          <label className="text-[10px] font-bold text-slate-400 dark:text-slate-500 block font-mono uppercase tracking-wider">
+                            Reliability
+                          </label>
+                          <select
+                            value={styleOptions.errorCorrectionLevel}
+                            onChange={(e) => setStyleOptions({ ...styleOptions, errorCorrectionLevel: e.target.value as any })}
+                            className="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/50 focus:outline-hidden focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 text-[11px] text-slate-750 dark:text-slate-300 font-semibold"
+                            id="style-errorcorrection-select"
+                          >
+                            <option value="L">Standard</option>
+                            <option value="M">Enhanced</option>
+                            <option value="Q">Excellent</option>
+                            <option value="H">Maximum</option>
+                          </select>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    {/* CENTER LOGO CONFIGURATION */}
+                    <div className="pt-4 border-t border-slate-100 dark:border-slate-800/60 space-y-3">
+                      <div className="flex items-center gap-1.5">
+                        <ImageIcon className="w-3.5 h-3.5 text-emerald-500" />
+                        <h4 className="text-[10px] font-bold text-slate-750 dark:text-slate-300 font-display uppercase tracking-tight">
+                          Center Logo Overlay
+                        </h4>
+                      </div>
+
+                      <div className="space-y-3">
+                        <div className="space-y-1 flex flex-col">
+                          <label className="text-[10px] font-bold text-slate-450 dark:text-slate-500 uppercase tracking-wider block font-mono mb-1">Logo Type</label>
+                          <select
+                            value={styleOptions.logoType}
+                            onChange={(e) => {
+                              const val = e.target.value as any;
+                              setStyleOptions({ ...styleOptions, logoType: val });
+                            }}
+                            className="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/50 focus:outline-hidden focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 text-[11px] text-slate-750 dark:text-slate-300 font-semibold"
+                            id="logo-type-select"
+                          >
+                            <option value="auto">Auto (Match QR)</option>
+                            <option value="none">None (Plain QR)</option>
+                            <option value="custom">Custom Image...</option>
+                            <option value="website">🌐 Globe</option>
+                            <option value="text">📝 Note</option>
+                            <option value="wifi">📶 WiFi Signal</option>
+                            <option value="whatsapp">💬 WhatsApp</option>
+                            <option value="email">✉️ Envelope</option>
+                            <option value="map">📍 Location</option>
+                            <option value="social">📱 Phone / Social</option>
+                            <option value="facebook">📘 Facebook</option>
+                            <option value="instagram">📸 Instagram</option>
+                            <option value="linkedin">💼 LinkedIn</option>
+                            <option value="youtube">📺 YouTube</option>
+                            <option value="tiktok">🎵 TikTok</option>
+                            <option value="twitter">𝕏 Twitter</option>
+                            <option value="product">📦 Product Box</option>
+                            <option value="payment">💳 Card Payment</option>
+                            <option value="vcard">👤 User Avatar</option>
+                          </select>
+                        </div>
+
+                        {styleOptions.logoType === 'custom' && (
+                          <div className="space-y-3">
+                            <div className="space-y-1">
+                              <label className="text-[10px] font-bold text-slate-450 dark:text-slate-500 uppercase tracking-wider block font-mono">Upload Logo</label>
+                              <div className="flex flex-wrap items-center gap-2">
+                                <label className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-dashed border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/50 hover:bg-slate-100/50 dark:hover:bg-slate-900/50 text-[10px] font-semibold text-slate-600 dark:text-slate-400 cursor-pointer transition-all">
+                                  <Upload className="w-3 h-3 text-emerald-500" />
+                                  <span>Browse...</span>
+                                  <input
+                                    type="file"
+                                    accept="image/*"
+                                    className="hidden"
+                                    onChange={(e) => {
+                                      const file = e.target.files?.[0];
+                                      if (file) {
+                                        const reader = new FileReader();
+                                        reader.onload = (event) => {
+                                          setStyleOptions({
+                                            ...styleOptions,
+                                            customLogoData: event.target?.result as string,
+                                            customLogoScale: 1.0,
+                                            customLogoRadius: 0.25
+                                          });
+                                        };
+                                        reader.readAsDataURL(file);
+                                      }
+                                    }}
+                                  />
+                                </label>
+                                {styleOptions.customLogoData ? (
+                                  <div className="flex items-center gap-1.5">
+                                    <img
+                                      src={styleOptions.customLogoData}
+                                      alt="Custom logo"
+                                      className="w-6 h-6 rounded-md object-contain border border-slate-200 dark:border-slate-800 bg-white"
+                                    />
+                                    <button
+                                      onClick={() => setStyleOptions({ ...styleOptions, customLogoData: null })}
+                                      className="p-0.5 rounded-full text-red-500 hover:bg-red-50 dark:hover:bg-red-950/20 cursor-pointer"
+                                      title="Remove Image"
+                                    >
+                                      <X className="w-3 h-3" />
+                                    </button>
+                                  </div>
+                                ) : (
+                                  <span className="text-[9px] text-slate-400 dark:text-slate-500 font-mono">No file</span>
+                                )}
+                              </div>
+                            </div>
+
+                            {styleOptions.customLogoData && (
+                              <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-950/40 border border-slate-100 dark:border-slate-850/60 space-y-3">
+                                <div className="space-y-3">
+                                  <div className="space-y-1">
+                                    <div className="flex items-center justify-between">
+                                      <label className="text-[10px] font-semibold text-slate-600 dark:text-slate-400">
+                                        Zoom Scale
+                                      </label>
+                                      <span className="text-[9px] font-mono font-bold text-emerald-500">
+                                        {Math.round((styleOptions.customLogoScale ?? 1.0) * 100)}%
+                                      </span>
+                                    </div>
+                                    <input
+                                      type="range"
+                                      min="0.5"
+                                      max="1.5"
+                                      step="0.05"
+                                      value={styleOptions.customLogoScale ?? 1.0}
+                                      onChange={(e) => setStyleOptions({
+                                        ...styleOptions,
+                                        customLogoScale: parseFloat(e.target.value)
+                                      })}
+                                      className="w-full accent-emerald-500 h-1 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer"
+                                    />
+                                  </div>
+
+                                  <div className="space-y-1">
+                                    <div className="flex items-center justify-between">
+                                      <label className="text-[10px] font-semibold text-slate-600 dark:text-slate-400">
+                                        Corner Radius
+                                      </label>
+                                      <span className="text-[9px] font-mono font-bold text-emerald-500">
+                                        {Math.round((styleOptions.customLogoRadius ?? 0.25) * 200)}%
+                                      </span>
+                                    </div>
+                                    <input
+                                      type="range"
+                                      min="0"
+                                      max="0.5"
+                                      step="0.02"
+                                      value={styleOptions.customLogoRadius ?? 0.25}
+                                      onChange={(e) => setStyleOptions({
+                                        ...styleOptions,
+                                        customLogoRadius: parseFloat(e.target.value)
+                                      })}
+                                      className="w-full accent-emerald-500 h-1 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                  </div>
+
                 </div>
+
 
               </div>
 
@@ -3182,8 +3254,17 @@ export default function App() {
 
         </AnimatePresence>
 
-        {/* Bottom Banner Ad */}
-        <AdsterraBanner id="bottom" />
+        {/* --- NATIVE RECOMMENDATION AD WIDGET --- */}
+        {activeTab === 'tool' && (
+          <section className="mt-6 pt-4 border-t border-slate-200/60 dark:border-slate-900">
+            <div className="mb-3 text-center md:text-left">
+              <h3 className="text-sm font-bold text-slate-400 dark:text-slate-500 font-mono tracking-wider uppercase">
+                Recommended For You
+              </h3>
+            </div>
+            <AdsterraNative id="native-feed" />
+          </section>
+        )}
 
         {/* --- CROSS-PROMOTION NETWORK GRID --- */}
         <section className="mt-20 pt-10 border-t border-slate-200/60 dark:border-slate-900 space-y-6">
@@ -3215,6 +3296,13 @@ export default function App() {
               <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-sans">
                 <strong>EZ QR Code Generator</strong> provides free utility codes running 100% locally in your browser. All generated outputs and payloads remain private to you. We do not store, proxy, or track your data. It is the user's responsibility to verify that the generated QR codes scan and point to correct destinations prior to printing or commercial distribution. We are not liable for any losses or errors resulting from incorrect, modified, or corrupted code scans.
               </p>
+            </div>
+
+            {/* Mobile Bottom Banner Ad (320x50) */}
+            <div className="w-full flex lg:hidden justify-center items-center mt-6 overflow-visible">
+              <div className="shrink-0">
+                <Adsterra320x50 id="bottom-mobile" />
+              </div>
             </div>
           </div>
         )}
