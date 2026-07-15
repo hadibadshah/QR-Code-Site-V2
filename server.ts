@@ -12,6 +12,43 @@ async function startServer() {
     res.json({ status: 'ok' });
   });
 
+  // Google Ownership Verification Explicit Route
+  app.get('/googleb53210ff3f96f54d.html', (req, res) => {
+    res.setHeader('Content-Type', 'text/html');
+    res.send('google-site-verification: googleb53210ff3f96f54d.html');
+  });
+
+  // robots.txt Route
+  app.get('/robots.txt', (req, res) => {
+    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+    res.send('User-agent: *\nAllow: /\n\nSitemap: https://eztoolbox.xyz/sitemap.xml');
+  });
+
+  // sitemap.xml Route
+  app.get('/sitemap.xml', (req, res) => {
+    const sitemapPath = process.env.NODE_ENV !== 'production'
+      ? path.join(process.cwd(), 'public', 'sitemap.xml')
+      : path.join(process.cwd(), 'dist', 'sitemap.xml');
+    
+    fs.readFile(sitemapPath, 'utf8', (err, data) => {
+      if (err) {
+        // Fallback to public if dist isn't compiled yet or during transition
+        const fallbackPath = path.join(process.cwd(), 'public', 'sitemap.xml');
+        fs.readFile(fallbackPath, 'utf8', (fallbackErr, fallbackData) => {
+          if (fallbackErr) {
+            res.status(404).send('Sitemap not found');
+            return;
+          }
+          res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+          res.send(fallbackData);
+        });
+        return;
+      }
+      res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+      res.send(data);
+    });
+  });
+
   // Configure Vite dev server middleware or serve production assets
   if (process.env.NODE_ENV !== 'production') {
     const vite = await createViteServer({
